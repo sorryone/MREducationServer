@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 __author__ = 'maxijie'
 
-from django.http import HttpResponse
-import json
+from lib.djhelper.api_view import api_view, api_result
 
 
+@api_view(["GET"])
+@api_result
 def Test(request):
-    print("This is Test")
-    return HttpResponse(json.dumps({"valuse": "This is Test"}),
-                        content_type='application/json')
+    if request.method == "GET":
+        print("This is Test")
+        return 0, {"value": "This is Test"}

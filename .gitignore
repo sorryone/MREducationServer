@@ -1,8 +1,4 @@
 logs/
-bms/.ropeproject/
-bms/models/.ropeproject/
-templates/
-static/
 uwsgi.pid
 *.pyc
 django_socket.xml

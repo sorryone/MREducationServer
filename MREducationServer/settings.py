@@ -11,9 +11,17 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import time
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+IMAGES_URL = '/static/images/'
+IMAGES_ROOT = os.path.join(BASE_DIR, 'static/images/')
+XLS_ROOT = os.path.join(BASE_DIR, 'xls/')
+PACKAGE_ROOT = os.path.join(BASE_DIR, 'package/')
+DOWNLOAD_URL = "http://cdn.bellcat.cn/package/"
+CUR_TIME = time.time()
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'WebServer',
 ]
 
@@ -48,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'lib.djhelper.middleware.Request_middleware.RequestMiddleWare',
+    # 'lib.djhelper.middleware.auth_middleware.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'MREducationServer.urls'
@@ -55,7 +66,7 @@ ROOT_URLCONF = 'MREducationServer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(STATIC_ROOT, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,10 +89,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dbserver',
-	'USER': "root",
-	'PASSWORD':'',
-	'HOST': 'localhost',
-	'PORT': 3306,
+        'USER': "root",
+        'PASSWORD': '86202263',
+        'HOST': '0.0.0.0',
+        'PORT': 3306,
     }
 }
 
@@ -121,10 +132,3 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-IMAGES_URL = '/static/images'
-IMAGES_ROOT = os.path.join(BASE_DIR, 'static/images')
-
-

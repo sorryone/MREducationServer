@@ -11,15 +11,15 @@ class AuthMiddleware(object):
         try:
             method_name = request.path.split('/')[2]
             path_name = request.path.split('/')[1]
-        except Exception, e:
-            print '>>> auth middleware exception:', e
+        except Exception as e:
+            print ('>>> auth middleware exception:', e)
             return
 
         if path_name not in CHECK_PATH:
             return
 
         if method_name in IGNORE_METHOD:
-            print "INGORE_method_name=", method_name
+            print ("INGORE_method_name=", method_name)
             return
 
         from bms.logics.users import UserLogin

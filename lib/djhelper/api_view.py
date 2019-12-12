@@ -1,19 +1,10 @@
 # -*- coding: utf-8 -*-
 import time
-from lib.redis_model import HashModel
-from lib.redis_model import ListModel
 from rest_framework.decorators import api_view as rest_api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import render
 
-
-class MessageCache(HashModel):
-    pass
-
-
-class MessageQueue(ListModel):
-    pass
 
 IGNORE_METHOD = ()
 
